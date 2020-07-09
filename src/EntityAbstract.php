@@ -31,13 +31,8 @@ abstract class EntityAbstract {
 
 		$methods = get_class_methods($this);
 		$array 	 = [];
-
-		if(true === is_string($set)) {
-			$set = [$set];
-		}
-
-		$set 	= array_flip($set);
-		$amount = count($set);
+		$set 	 = array_flip($set);
+		$amount  = count($set);
 
 		foreach($methods as $method) {
 			
@@ -59,7 +54,7 @@ abstract class EntityAbstract {
 				}
 			}
 		}
-		
+
 		return json_decode(json_encode($array, JSON_INVALID_UTF8_IGNORE), true);
 	}
 
