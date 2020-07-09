@@ -19,22 +19,22 @@ use sFire\DataControl\TypeString;
  * @package sFire\Entity
  */
 class ArrayToEntity {
-	
-	
-	/**
-	 * Constructor. Injects an data array into an existing object with Setters
-	 * @param object $object The object to be injected with the array data
-	 * @param array $data The data that needs to be injected
-	 */	
-	public function __construct($object, array $data) {
 
-		foreach($data as $key => $value) {
 
-		    $method = sprintf('set%s', TypeString::toPascalCase($key));
+    /**
+     * Constructor. Injects an data array into an existing object with Setters
+     * @param object $object The object to be injected with the array data
+     * @param array $data The data that needs to be injected
+     */
+    public function __construct($object, array $data) {
 
-			if(true === is_callable([$object, $method])) {
-				call_user_func_array([$object, $method], [$value]);
-			}
-		}
-	}
+        foreach($data as $key => $value) {
+
+            $method = sprintf('set%s', TypeString::toPascalCase($key));
+
+            if(true === is_callable([$object, $method])) {
+                call_user_func_array([$object, $method], [$value]);
+            }
+        }
+    }
 }
